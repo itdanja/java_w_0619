@@ -31,8 +31,7 @@ public class Day03_3 {
 					int 물약구매수 = 0;
 					int 과일구매수 = 0;
 					int 장신구구매수 = 0;
-					System.out.println("-----> 상품 쇼핑 ");
-					
+					System.out.println("-----> 상품 쇼핑 ");	
 					while(true) {
 						System.out.println("1.물약[100원] 2.과일[200원] 3.장신구[300원] 4.결제");
 						int 선택 = scanner.nextInt();
