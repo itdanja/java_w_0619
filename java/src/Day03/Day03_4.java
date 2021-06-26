@@ -2,8 +2,6 @@ package Day03;
 
 import java.util.Scanner;
 
-import com.sun.tools.jdeprscan.scan.Scan;
-
 public class Day03_4 {
 	
 	// 키오스크 프로그램 [ 무인 프로그램 ] 
