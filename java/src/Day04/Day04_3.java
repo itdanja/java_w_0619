@@ -69,20 +69,6 @@ public class Day04_3 {
 			System.out.println("-------> 최종 승리자 : 무승부 ");
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	
 	
