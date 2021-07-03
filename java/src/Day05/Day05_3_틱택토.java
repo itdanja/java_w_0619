@@ -34,7 +34,7 @@ public class Day05_3_틱택토 {
 					System.out.println("[게임종료] : 컴퓨터 승리");
 					break; // while 게임무한루프 종료
 				}
-
+	
 			while(true) { // 플레이어 입력 무한루프 [ 정상적인 입력을 할때 종료 ] 
 				// 플레이어에 입력받아 해당 위치에 알 두기
 				System.out.print("[선택] 두고자하는 위치 : ");
@@ -48,8 +48,25 @@ public class Day05_3_틱택토 {
 						게임판[플레이어] = "[O]"; // 입력받은 인덱스에 알 바꾸기
 						break; // 가장 가까운 반복문 탈출 
 					}
+					
 			} // while 2 end
 			
+						// 모든 알 두었을때  => 알이 9개 이면 
+						int 현재알수 = 0;
+						for( int i = 0 ; i<9 ; i++ ) {
+							if(!게임판[i].equals("[ ]") ) 현재알수++;
+						}
+						if( 현재알수 == 9 ) {
+							// 게임판 출력 
+							for( int i = 0 ; i<게임판.length ; i++ ) {
+								System.out.print( 게임판[i] );
+								// 3개씩 출력후에 줄바꿈
+								if( i % 3 == 2 ) System.out.println();
+							}
+							System.out.println("[게임종료] : 무승부");
+							break; // while 게임무한루프 종료
+						}
+						
 			// 컴퓨터 [ 난수 생성해서 알 두기 ] 
 				// 난수 생성 클래스 = Random
 			while( true ) {
