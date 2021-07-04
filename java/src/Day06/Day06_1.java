@@ -22,6 +22,7 @@ public class Day06_1 {
 		Integer[] 학생점수 = null;	// 현재 메모리가 null 인 배열 선언 
 			// int 		:	정수 자료형	[ new x ] => 변수
 			// Integer 	:	정수 클래스 	[ new ] => 객체
+		int 인원수 = 0 ;
 		
 		while( true ) { // 무한루프 
 			
@@ -31,7 +32,7 @@ public class Day06_1 {
 			
 			if( 선택 == 1 ) {
 				System.out.print(" ---> 학생수 : "); 
-				int 인원수 = scanner.nextInt();
+				인원수 = scanner.nextInt();
 				학생점수 = new Integer[인원수]; 
 				System.out.println(인원수 + "만큼 학생점수를 저장할수 있습니다");
 			}
@@ -59,8 +60,18 @@ public class Day06_1 {
 					System.out.println((i+1)+"번째 학생의 점수 " + 학생점수[i] );
 				}
 				
-				// 가장 높은 점수 출력 
-				// 평균 출력 
+				// 가장 높은 점수 출력
+				int max = 0;
+				int sum = 0; 
+				for( int i = 0 ; i<학생점수.length ; i++ ) {
+					// 최댓값 
+					if( max < 학생점수[i] ) max = 학생점수[i];
+					// 누적합계
+					sum += 학생점수[i];
+				}
+				// 최댓값 / 평균 출력 
+				System.out.println(" 가장 높은 점수는 : " + max );
+				System.out.println(" 학생들의 평균은  : " + sum / 인원수 );
 			}
 			else if( 선택 == 4 ) { }
 			else { } 
