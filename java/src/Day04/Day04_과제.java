@@ -1,6 +1,6 @@
 package Day04;
 
-public class Day04_°úÁ¦ {
+public class Day04_���� {
 	
 /*	°úÁ¦1
 	  	*        *
