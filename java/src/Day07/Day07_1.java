@@ -1,5 +1,7 @@
 package Day07;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,6 +22,11 @@ public class Day07_1 {
 			// int[] 배열 = new int[30];
 		// 2. 리스트 : 동일한  클래스의 여러개 메모리를 저장할수 있는 객체 
 			// ArrayList<Integer> 리스트 = new ArrayList<>();
+	
+	// 메모리 영구 저장 방법 => 메모리(주기억장치) => 보조기억장치
+		// 1. 파일처리 
+		// 2. 데이터베이스 
+		// 3. 클라우드 
 	
 	// 클래스 [ java 100% 객체지향 ] 
 		// 1. 최상위 클래스에 object 클래스가 존재 
@@ -64,6 +71,27 @@ public class Day07_1 {
 		
 		temp1.나이업데이트(40);
 		System.out.println( temp1.나이);
+
+		// 파일처리 
+			// 스트림 : 외부장치와 데이터 통신 
+				// !!! : 데이터 통신 단위 : 바이트 
+					// bit[0,1] => 8bit => 1바이트
+			// 1. 내보내기 [ FileOutputStream 클래스 ] 
+		
+			// 2. 읽어오기 
+		// 예외처리 : 오류 발생시 => 오류 처리 경우의수 
+		try { // try 안에서 예외[오류] 발생시 => catch 이동 
+				// try 안에서 예외가 없을경우는 그대로 실행 
+			FileOutputStream fileOutputStream = new FileOutputStream("c:/java/test.txt");
+			String 문자열 = "java입니다"; // 문자열 
+			fileOutputStream.write( 문자열.getBytes() );
+				// write( 바이트 ) : 출력[내보내기] : 
+					// 문자열.getBytes() : 문자열 => 바이트 
+			
+		} catch (Exception e) {  // Exception : 모든 예외 처리 클래스 
+			System.out.println("파일경로가 존재하지 않습니다");
+		} 
+			
 		
 		
 		

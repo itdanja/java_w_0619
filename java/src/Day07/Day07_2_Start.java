@@ -1,5 +1,6 @@
 package Day07;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Day07_2_Start {
@@ -8,11 +9,14 @@ public class Day07_2_Start {
 		// 1. scanner 
 	public static Scanner scanner = new Scanner(System.in);
 		// 2. 리스트나 배열 
-	
+	public static ArrayList<Member> members = new ArrayList<>();
+		// ArrayList : 리스트 클래스 
+			// < 제네릭 > : 리스트객체에 담을 객체의클래스
+				// 리스트명.add( 객체명 ) : 리스트에 객체 담기 
+				// 리스트명.size() : 리스트내 객체 수 
+				// 리스트명.get( 인덱스번호 ) : 리스트내 인덱스번호에 해당하는 객체 호출 
 	public static void main(String[] args) {
-		
 		프로그램시작();
-		
 	} // main 끝 
 	
 	// 프로그램 동작 메소드 
@@ -23,8 +27,14 @@ public class Day07_2_Start {
 			System.out.println("\n[[[[ 회원제 커뮤니티 ]]]]");
 			System.out.println("[[[ 1.로그인 2.회원가입 3.아이디찾기 4.비밀번호찾기 5.프로그램종료]]]");
 			System.out.print("[[[ 선택 : ");	int 선택 = scanner.nextInt();
+			
+			// 멤버 임시 객체
+			Member member = new Member();
+			
 			if( 선택 == 1 ) {}
-			else if( 선택 == 2 ) {}
+			else if( 선택 == 2 ) {
+				member.회원가입();
+			}
 			else if( 선택 == 3 ) {}
 			else if( 선택 == 4 ) {}
 			else if( 선택 == 5 ) {
