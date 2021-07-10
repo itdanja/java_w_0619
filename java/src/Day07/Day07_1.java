@@ -28,7 +28,7 @@ public class Day07_1 {
 			// 멤버 : 1.필드 2.생성자 3.메소드 
 	
 	
-	public static void main(String[] args) {
+	public static void main( String[] args) {
 		
 		// 배열 [ 인덱스 ]
 		String[] 배열 = new String[3]; // String 3개를 저장할수 있는 배열 
@@ -59,7 +59,11 @@ public class Day07_1 {
 		System.out.println( temp1.이름출력() ) ;
 		System.out.println( temp1.나이출력() ) ;
 		
+		temp1.회원정보();
+		System.out.println( temp1.학생점수(20) );
 		
+		temp1.나이업데이트(40);
+		System.out.println( temp1.나이);
 		
 		
 		
