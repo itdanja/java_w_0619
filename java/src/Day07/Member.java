@@ -1,5 +1,8 @@
 package Day07;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 public class Member {
 
 	// 필드 [ 상태 ] 
@@ -64,6 +67,25 @@ public class Member {
 		Day07_2_Start.members.add(member);
 		// 회원가입 성공 
 		System.err.println("[회원가입성공] : 가입해주셔서 감사합니다 ");
+		// 파일처리 
+		try {
+			FileOutputStream fileOutputStream 
+					= new FileOutputStream("c:/java/memberlist.txt");
+			// 리스트내 모든 회원을 파일에 저장 
+			// 리스트의 for문 활용 
+			for( Member temp : Day07_2_Start.members ) {
+				// for( 임시 객체명 : 리스트명 ) : 리스트내 모든 객체를 임시객체에 하나씩 대입 
+				// 회원정보를 하나의 문자열 변환 [ 필드 구분 ,  // 회원[객체] 구분 \n ]
+				String 회원정보 = temp.아이디+","+temp.비밀번호+","+temp.이름+
+						","+temp.성별+","+temp.이메일+","+temp.포인트+","+
+						temp.휴대전화+","+temp.등급+"\n";
+				
+				fileOutputStream.write( 회원정보.getBytes() );
+			}
+		} catch ( Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	// 2. 로그인 메소드 

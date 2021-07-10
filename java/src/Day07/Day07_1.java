@@ -1,5 +1,6 @@
 package Day07;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -77,8 +78,7 @@ public class Day07_1 {
 				// !!! : 데이터 통신 단위 : 바이트 
 					// bit[0,1] => 8bit => 1바이트
 			// 1. 내보내기 [ FileOutputStream 클래스 ] 
-		
-			// 2. 읽어오기 
+	
 		// 예외처리 : 오류 발생시 => 오류 처리 경우의수 
 		try { // try 안에서 예외[오류] 발생시 => catch 이동 
 				// try 안에서 예외가 없을경우는 그대로 실행 
@@ -92,6 +92,21 @@ public class Day07_1 {
 			System.out.println("파일경로가 존재하지 않습니다");
 		} 
 			
+		// 2. 읽어오기 
+		try {
+			FileInputStream fileInputStream = new FileInputStream("c:/java/test.txt");
+			// 스트림의 이동단위 바이트 
+			byte[] 바이트 = new byte[1024];	// 1024개 바이트를 저장할수있는 배열 :  1024바이트 => 1kbtye
+			fileInputStream.read( 바이트 ); // 
+				// read : 파일 스트림 읽어오기 => 바이트 배열에 저장 
+			System.out.println( new String( 바이트 ) );
+					// new String( 바이트 ) :   바이트 => 문자열
+			
+		} catch ( Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		
 		
