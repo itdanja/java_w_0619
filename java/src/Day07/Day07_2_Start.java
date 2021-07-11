@@ -38,8 +38,7 @@ public class Day07_2_Start {
 			// 회원마다 회원정보별 구분 
 			for( int i = 0 ; i<회원.length-1 ; i++ ) {
 				String[] 정보 = 회원[i].split(",");
-				Member member = new Member(정보[0], 정보[1], 정보[2], Integer.parseInt( 정보[3] ) ,
-										정보[4], Integer.parseInt(정보[5]), Integer.parseInt(정보[6]), 정보[7]);
+				Member member = new Member(정보[0], 정보[1], 정보[2],Integer.parseInt( 정보[3] ) ,정보[4], Integer.parseInt(정보[5]), Integer.parseInt(정보[6]), 정보[7] );
 					// 문자열 String => 정수형 int 
 						// Integer.parseInt(문자열)
 				members.add(member); // 해당 멤버를 리스트에 담기 
