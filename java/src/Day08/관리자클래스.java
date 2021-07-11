@@ -12,7 +12,7 @@ public class 관리자클래스 extends 회원 {
 	public void 회원정보() {
 		super.회원정보();
 		System.out.println("[[[ 관리자회원님의 직급 : " + this.관리자직급);
-		System.out.println("[[[ 관리자회원님의 직급 : " + this.아이디);
+		
 	}
 	
 	
