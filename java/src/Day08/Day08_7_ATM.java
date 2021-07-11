@@ -32,7 +32,14 @@ public class Day08_7_ATM {
 					신한은행.입금();
 				}
 			}
-			else if( 선택 == 3 ) {}
+			else if( 선택 == 3 ) {
+				System.out.println("[[ 1. 신한은행 2.국민은행 ]] :  ");
+				int 선택2 = scanner.nextInt();
+				if( 선택2 == 1 ) {
+					신한은행 신한은행 = new 신한은행();
+					신한은행.출금();
+				}
+			}
 			else if( 선택 == 4 ) {}
 			else if( 선택 == 5 ) {}
 			else if( 선택 == 6 ) {

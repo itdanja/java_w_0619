@@ -52,7 +52,11 @@ public class 신한은행 extends 계좌 {
 	public void 입금() {
 		System.out.println("[[[[ 신한은행 입금 화면 ]]]]");
 		super.입금();
-		
+	}
+	@Override
+	public void 출금() {
+		System.out.println("[[[[ 신한은행 출금 화면 ]]]]");
+		super.출금();
 	}
 	
 	

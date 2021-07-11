@@ -40,7 +40,7 @@ public class 계좌 {
 	
 	// 2. 입금 메소드 
 	public void 입금() {
-		System.out.println("[[[[ 입금 등록 화면 ]]]]");
+		System.out.println("[[[[ 입금  화면 ]]]]");
 		System.out.print("[[[ 계좌번호 : "); 
 			String 계좌번호 = Day08_7_ATM.scanner.next();
 		System.out.print("[[[ 비밀번호 : "); 
@@ -50,9 +50,31 @@ public class 계좌 {
 		
 		for( 계좌 temp : Day08_7_ATM.계좌목록 ) {
 			if( temp.get계좌번호().equals(계좌번호) && temp.get비밀번호() == 비밀번호 ) {
-				temp.입금처리(입금액);;
+				temp.입금처리(입금액);
+				return;
 			}
 		}
+		System.err.println("\n[[[ [실패] 동일한 계좌번호 혹은 비밀번호가 다릅니다 ]]]");
+	}
+	
+	// 3. 출금 메소드 
+	public void 출금() {
+		System.out.println("[[[[ 출금  화면 ]]]]");
+		System.out.print("[[[ 계좌번호 : "); 
+			String 계좌번호 = Day08_7_ATM.scanner.next();
+		System.out.print("[[[ 비밀번호 : "); 
+			int 비밀번호 = Day08_7_ATM.scanner.nextInt();
+		System.out.print("[[[ 출금액 : "); 
+			int 출금액 = Day08_7_ATM.scanner.nextInt();
+			
+		for( 계좌 temp : Day08_7_ATM.계좌목록 ) {
+			if( temp.get계좌번호().equals(계좌번호) && temp.get비밀번호() == 비밀번호 ) {
+				temp.출금처리(출금액);
+				return;
+			}
+		}
+		System.err.println("\n[[[ [실패] 동일한 계좌번호 혹은 비밀번호가 다릅니다 ]]]");
+
 	}
 	// 메소드 
 	// 0. get , set 메소드 
@@ -66,6 +88,17 @@ public class 계좌 {
 		this.금액 += 입금액;
 		System.err.println("\n[[[ [완료] 입금처리가 되었습니다  ]]]");
 	}
+	
+	public void 출금처리( int 출금액 ) {
+		if( this.금액 < 출금액 ) {
+			System.err.println("\n[[[ [실패] 예금액이 부족합니다   ]]]");
+			return;
+		}
+		this.금액 -= 출금액;
+		System.err.println("\n[[[ [완료] 출금처리가 되었습니다  ]]]");
+	}
+	
+	
 	
 	
 	
