@@ -74,8 +74,44 @@ public class 계좌 {
 			}
 		}
 		System.err.println("\n[[[ [실패] 동일한 계좌번호 혹은 비밀번호가 다릅니다 ]]]");
-
 	}
+	
+	// 4. 이체 메소드 
+	public void 이체() {
+		System.out.println("[[[[ 이체  화면 ]]]]");
+		System.out.print("[[[ 계좌번호 : "); 
+			String 계좌번호 = Day08_7_ATM.scanner.next();
+		System.out.print("[[[ 비밀번호 : "); 
+			int 비밀번호 = Day08_7_ATM.scanner.nextInt();
+			
+			for( 계좌 temp : Day08_7_ATM.계좌목록 ) {
+				
+				if( temp.get계좌번호().equals(계좌번호) && temp.get비밀번호() == 비밀번호 ) {
+
+					System.out.print("[[[ 이체금액 : "); 
+						int 이체금액 = Day08_7_ATM.scanner.nextInt();
+						if( temp.금액 < 이체금액 ) {
+							System.err.println("\n[[[ [실패] 예금액이 부족합니다   ]]]");
+							return;
+						}
+						System.out.print("[[[ 받는 사람 계좌번호 : "); 
+						String 계좌번호2 = Day08_7_ATM.scanner.next();
+						// 
+						for( 계좌 temp2 : Day08_7_ATM.계좌목록 ) {
+							if( temp2.계좌번호.equals(계좌번호2) ) {
+									System.out.println("[[[ 확인 ]]] : 받는사람명 : " + temp2.계좌주);
+									temp2.금액 += 이체금액;
+									System.err.println("\n[[[ [이체] 이체처리가 되었습니다  ]]]");
+									return;
+							}
+						}
+						System.err.println("\n[[[ [실패] 받는사람 계좌번호 없습니다   ]]]");
+				}
+			}
+	}
+	
+	
+	
 	// 메소드 
 	// 0. get , set 메소드 
 	public String get계좌번호() {
