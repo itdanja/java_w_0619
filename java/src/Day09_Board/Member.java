@@ -1,6 +1,15 @@
 package Day09_Board;
 
+import java.util.Properties;
 import java.util.Scanner;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class Member {
 	
@@ -54,15 +63,50 @@ public class Member {
 		// 회원가입 성공 
 		List.members.add( new Member(id, passwordconfirm, name, email, 0) );
 		// 1. 가입한 회원에게 축하메일 
-		
+		mailsend( email  , 1 );
+		System.out.println("[[회원가입 성공]]");
 		// 2. 파일에 저장 
 		
 	}
 	// 2. 메일보내기  [ 메일라이브러리 ]
 	public void mailsend( String recipientmail , int type ) {
 								// 받는사람메일		// 메일내용 유형
+		// SMTP : 메일 전송 프로토콜 
+		// 1. 설정 
+		String host ="smtp.naver.com"; // 도메인회사의 host명 
+			// 네이버 : smtp.naver.com // 구글 :  smtp.gmail.com 
+		String email = "본인 아이디@도메인주소 ";	// 본인 아이디@도메인주소 
+		String password = "본인패스워드 ";	// 본인패스워드 
 		
-		
+		Properties properties = new Properties();
+			// Properties : 설정 클래스 
+		properties.put( "mail.smtp.host" , host );
+		properties.put( "mail.smtp.port" , 587 );	// stmtp 접근 번호 // 네이버 587
+		properties.put( "mail.smtp.auth" , "true" );
+		// 2. 인증 
+		Session session = Session.getDefaultInstance( properties , new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(email, password);
+			}
+		} );
+		// 3. 메일 작성 
+		try { // 예외[오류] 발생시 catch 이동
+			
+			MimeMessage message = new MimeMessage( session ); // 메시지에 인증 넣기 
+			message.setFrom( new InternetAddress(email) ); // 보내는사람의 인터넷 주소 얻기 
+			message.addRecipient( Message.RecipientType.TO , new InternetAddress( recipientmail ) ); // 받는사람 
+			
+			if( type == 1 ) {
+				message.setSubject(" ~~ 홈페이지 가입 환영합니다 ");	// 메일 제목 
+				message.setText(" 다양한 이벤트 제공 합니다 ");	// 메일 내용 
+			}
+			// 전송
+			Transport.send(message);
+
+		}catch (Exception e) {
+			System.err.println("[[경고]] 메일 전송 실패 ");
+		}
+
 	}
 	// 3. 로그인 
 	// 4. 아이디찾기 
