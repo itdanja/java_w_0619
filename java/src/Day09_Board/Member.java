@@ -27,29 +27,29 @@ public class Member {
 	public void signup() {
 		System.out.println("[[[ 회원가입 ]]]");
 		// 1.중복체크 2. 5~10자리만 가능 
-		System.out.println("[[ id (5~10이내) : ");	String id = scanner.next();
+		System.out.print("[[ id (5~10이내) : ");	String id = scanner.next();
 			// 1. 중복체크 
 			int result = idcheck(id);
 			if( result == -1 ) {System.out.println("[[확인]] 사용 가능한 아이디 입니다 ");}
-			else { System.out.println("[[경고]] 동일한 아이디가 존재합니다"); return; }
+			else { System.err.println("[[경고]] 동일한 아이디가 존재합니다"); return; }
 			// 2. 아이디 길이 체크 
 			if( id.length() < 5 || id.length() > 10 ) {
-				 System.out.println("[[경고]] 아이디는 5~10이내로 가능합니다"); return;
+				 System.err.println("[[경고]] 아이디는 5~10이내로 가능합니다"); return;
 			}
 		// 1.패스워드 동일 1. 4자리만 가능  
-		System.out.println("[[ password : ");			String password = scanner.next();
-		System.out.println("[[ password confirm : ");	String passwordconfirm = scanner.next();
+		System.out.print("[[ password : ");			String password = scanner.next();
+		System.out.print("[[ password confirm : ");	String passwordconfirm = scanner.next();
 			// 1. 
 			if( !password.equals(passwordconfirm) ) {
 				// ! : not : true => false
-				System.out.println("[[경고]] 패스워드가 다릅니다"); return;
+				System.err.println("[[경고]] 패스워드가 다릅니다"); return;
 			}
-			if( password.length() !=4 ) { System.out.println("[[경고]] 패스워드는 4글자만 가능합니다"); return;  }
+			if( password.length() !=4 ) { System.err.println("[[경고]] 패스워드는 4글자만 가능합니다"); return;  }
 		
-		System.out.println("[[ name: ");	String name = scanner.next();
+		System.out.print("[[ name: ");	String name = scanner.next();
 		// 1.@ 포함 여부 [ contains ] 
-		System.out.println("[[ email ");	String email = scanner.next();
-		if( !email.contains("@") ) { System.out.println("[[경고]] 아이디@도메인주소 형식으로 입력해주세요"); return;   }
+		System.out.print("[[ email ");	String email = scanner.next();
+		if( !email.contains("@") ) { System.err.println("[[경고]] 아이디@도메인주소 형식으로 입력해주세요"); return;   }
 		
 		// 회원가입 성공 
 		List.members.add( new Member(id, passwordconfirm, name, email, 0) );
@@ -58,7 +58,12 @@ public class Member {
 		// 2. 파일에 저장 
 		
 	}
-	// 2. 메일보내기 
+	// 2. 메일보내기  [ 메일라이브러리 ]
+	public void mailsend( String recipientmail , int type ) {
+								// 받는사람메일		// 메일내용 유형
+		
+		
+	}
 	// 3. 로그인 
 	// 4. 아이디찾기 
 	// 5. 패스워드찾기
