@@ -12,7 +12,6 @@ public class Day08_1 {
 	private int 정수4 = 40;
 	
 	public static void main(String[] args) {
-		
 		// public 		: 프로젝트내 모든곳에서 접근 가능 	
 		// protected 	: 동일한 패키지내에서만 접근 가능
 						// 서브클래스가 다른패키지의 부모클래스가 있을경우 가능 
