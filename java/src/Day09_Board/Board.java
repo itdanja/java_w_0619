@@ -26,13 +26,24 @@ public class Board {
 	// 메소드
 		// 1. 메뉴 [ 글목록 ]  
 		public void boardmenu( Member logmember ) { // 로그인된 회원을 인수로 받기
+			 
+			System.out.println("[[[[[[[[[[[ 커뮤니티 ]]]]]]]]]]]");
+			System.out.println("번호\t제목\t\t\t\t작성자\t\t조회수\t작성일");
+				for( Board board : List.boards) {
+					System.out.println(board.bno+"\t"+board.btitle+"\t"+board.bwriter+"\t"
+								+"\t"+board.getBcount()+"\t"+board.bdate );
+				}
+				
 			System.out.println("1.글쓰기");
 			System.out.println("2.글상세보기");
-			writeboard( logmember.getId() ) ;
+			int 선택 = scanner.nextInt();
+			if( 선택 == 1 ) { writeboard( logmember.getId()); }
+			if( 선택 == 2 ) { viewboard( ) ; }
 		}
 		// 2. 글쓰기 
 		public void writeboard( String bwriter ) {
 			// 입력받기 
+			scanner.nextLine(); // 문제 보완
 			System.out.println("[제목] : ");	String btitle = scanner.nextLine();
 			System.out.println("[내용] : ");	String bcontents =  scanner.nextLine();
 					// scanner.next(); : 문자열 공백[x]
@@ -57,10 +68,21 @@ public class Board {
 			List.boards.add(board);
 
 			FileUtil.filesave(2);
-			
-			
+		
 		}
 		// 3. 글상세보기[ 게시물번호를 입력받아 글상세 ]
+		public void viewboard( ) {
+			System.out.println("[[[ 게시물번호 ]]]  : " ); int bno = scanner.nextInt();
+			for( Board board : List.boards) {
+				if( board.getBno() == bno ) {
+					board.bcount++; // 조회수 증가 
+					System.out.println("제목 " + board.getBtitle() );
+					System.out.println("내용 " + board.getBcontents() );
+					System.out.println("작성자 " + board.getBwriter() );
+					return;
+				}
+			}
+		}
 		// 4. 글수정 
 		// 5. 글삭제 
 		

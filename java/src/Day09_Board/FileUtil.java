@@ -27,6 +27,7 @@ public class FileUtil {
 							//예외 :  IOException
 							fileOutputStream.write( outstring.getBytes() );
 						}
+							fileOutputStream.close();
 							return 1; // 성공 
 						}
 						
@@ -41,12 +42,13 @@ public class FileUtil {
 							//예외 :  IOException
 							fileOutputStream.write( outstring.getBytes() );
 						}
+							fileOutputStream.close();
 							return 1; // 성공 
 						}
 
 
 		} catch ( Exception e) {
-			System.out.println("[파일처리 오류 ]"); 
+			System.out.println("[파일처리 오류1 ]"+e); 
 		}
 		return -1; // 실패 
 	}
@@ -67,17 +69,43 @@ public class FileUtil {
 				String[] temp = instring.split("\n");
 				
 				// 4. 회원마다 변수 분리
-				for( int i = 0 ; i<temp.length ; i++ ) {
+				for( int i = 0 ; i<temp.length-1 ; i++ ) {
 					String[] temp2 = temp[i].split(",");
 					Member member = new Member( temp2[0] ,temp2[1] ,temp2[2] 
 							, temp2[3] , Integer.parseInt( temp2[4] ) );
 					// 5. 리스트에 다시 담기	
 					List.members.add(member);
 				}		
+				fileInputStream.close();
 				return 1;
 			}
+			
+			if( type == 2 ) {
+				fileInputStream = new FileInputStream(boardpath);
+				// 1. 입력스트림에서 바이트 로 읽어오기
+				byte[] bytes = new byte[100000]; // 100kb 배열 
+				fileInputStream.read( bytes );
+				
+				// 2. 문자열 변환 
+				String instring = new String( bytes );
+				// 3. 게시물 분리하기 
+				String[] temp = instring.split("\n");
+				
+				// 4. 회원마다 변수 분리
+				for( int i = 0 ; i<temp.length-1 ; i++ ) {
+					String[] temp2 = temp[i].split(",");
+					Board Board = new Board(  Integer.parseInt(temp2[0]) ,temp2[1] ,temp2[2] 
+							, temp2[3] , temp2[4] , Integer.parseInt(temp2[5]) );
+					// 5. 리스트에 다시 담기	
+					List.boards.add(Board);
+				}		
+				fileInputStream.close();
+				return 1;
+			}
+			
+			
 		} catch ( Exception e) {
-			System.out.println("[파일처리 오류 ]"); 
+			System.out.println("[파일처리 오류2 ]" + e); 
 		}
 		return -1;
 		
