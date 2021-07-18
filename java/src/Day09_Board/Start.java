@@ -4,6 +4,8 @@ public class Start {
 	
 	public static void main(String[] args) {
 		
+		FileUtil.fileload(1); // 회원 불러오기 
+		
 		start();
 		
 	}

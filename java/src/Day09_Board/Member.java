@@ -62,11 +62,18 @@ public class Member {
 		
 		// 회원가입 성공 
 		List.members.add( new Member(id, passwordconfirm, name, email, 0) );
+
+		// 2. 파일에 저장
+		int result2 =  FileUtil.filesave( 1 );
+		if( result2 != 1) {
+			System.err.println("[[회원가입 실패]] 관리자에게 문의 ");
+		}
+		
+		System.out.println("[[회원가입 성공]]");
+		
 		// 1. 가입한 회원에게 축하메일 
 		mailsend( email  , 1 );
-		System.out.println("[[회원가입 성공]]");
-		// 2. 파일에 저장 
-		
+
 	}
 	// 2. 메일보내기  [ 메일라이브러리 ]
 	public void mailsend( String recipientmail , int type ) {
