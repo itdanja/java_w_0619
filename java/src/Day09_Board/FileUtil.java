@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class FileUtil {
 	
 	private static final String memberpath = "C:/Users/User/git/java_w_0619/java/src/Day09_Board/member.txt";
+	private static final String boardpath = "C:/Users/User/git/java_w_0619/java/src/Day09_Board/board.txt";
 	
 	public static int filesave( int type) { // 리스트 => 객체하나씩 => 필드별 분류 => 회원하나씩 내보내기
 		try {
@@ -28,6 +29,21 @@ public class FileUtil {
 						}
 							return 1; // 성공 
 						}
+						
+						if( type == 2 ) {		
+							fileOutputStream = new FileOutputStream(boardpath);
+																				// 현 pc 경로로 설정하기 
+						for( Board board : List.boards) {
+							// 리스트 for문 활용 : 리스트내 요소수만큼 하나씩 대입 
+							String outstring = board.getBno()+","+board.getBtitle()+","+board.getBcontents()+","+
+									board.getBwriter()+","+board.getBdate()+","+board.getBcount()+"\n";
+							
+							//예외 :  IOException
+							fileOutputStream.write( outstring.getBytes() );
+						}
+							return 1; // 성공 
+						}
+
 
 		} catch ( Exception e) {
 			System.out.println("[파일처리 오류 ]"); 
