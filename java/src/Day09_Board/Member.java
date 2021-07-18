@@ -72,18 +72,18 @@ public class Member {
 		System.out.println("[[회원가입 성공]]");
 		
 		// 1. 가입한 회원에게 축하메일 
-		mailsend( email  , 1 );
+		mailsend( email  , 1 , null );
 
 	}
 	// 2. 메일보내기  [ 메일라이브러리 ]
-	public void mailsend( String recipientmail , int type ) {
+	public void mailsend( String recipientmail , int type , String contents ) {
 								// 받는사람메일		// 메일내용 유형
 		// SMTP : 메일 전송 프로토콜 
 		// 1. 설정 
 		String host ="smtp.naver.com"; // 도메인회사의 host명 
 			// 네이버 : smtp.naver.com // 구글 :  smtp.gmail.com 
-		String email = "본인 아이디@도메인주소 ";	// 본인 아이디@도메인주소 
-		String password = "본인패스워드 ";	// 본인패스워드 
+		String email = "";	// 본인 아이디@도메인주소 
+		String password = "";	// 본인패스워드 
 		
 		Properties properties = new Properties();
 			// Properties : 설정 클래스 
@@ -103,9 +103,15 @@ public class Member {
 			message.setFrom( new InternetAddress(email) ); // 보내는사람의 인터넷 주소 얻기 
 			message.addRecipient( Message.RecipientType.TO , new InternetAddress( recipientmail ) ); // 받는사람 
 			
-			if( type == 1 ) {
+			if( type == 1 ) { //회원가입 
 				message.setSubject(" ~~ 홈페이지 가입 환영합니다 ");	// 메일 제목 
 				message.setText(" 다양한 이벤트 제공 합니다 ");	// 메일 내용 
+			}
+			if( type == 2 ) { // 비밀번호찾기 
+				
+				message.setSubject(" ~~ 홈페이지 회원님의 비밀번호 ");	// 메일 제목 
+				message.setText("회원님의 비밀번호 : " + contents );	// 메일 내용 
+				
 			}
 			// 전송
 			Transport.send(message);
@@ -116,9 +122,47 @@ public class Member {
 
 	}
 	// 3. 로그인 
+	public Member login() {
+		System.out.print("[[ id (5~10이내) : ");	String id = scanner.next();
+		System.out.print("[[ password : ");		String password = scanner.next();
+		for( Member member : List.members ) {
+			if( member.getId().equals(id) && member.getPassword().equals(password) ) {
+				System.out.println("[[[ 로그인 성공 ]]] : " + member.getId()+"님 안녕하세요");
+				return member ;
+			}
+		}
+		System.err.println("[[[동일한 회원정보가 없습니다]]]");
+		return null;
+	}
 	// 4. 아이디찾기 
+	public void findid() {
+		System.out.print("[[ name: ");	String name = scanner.next();
+		System.out.print("[[ email ");	String email = scanner.next();
+	
+		for( Member member : List.members ) {
+			if( member.getName().equals(name) && member.getEmail().equals(email) ) {
+				System.out.println("[[[ 회원님의 아이디 : "+ member.getId() + "]]]");
+				return;
+			}
+		}
+		System.err.println("[[[동일한 회원정보가 없습니다]]]");
+	}
 	// 5. 패스워드찾기
-	// 6. 회원탈퇴
+	public void findpassword() {
+		System.out.print("[[ id (5~10이내) : ");	String id = scanner.next();
+		System.out.print("[[ email ");	String email = scanner.next();
+		for( Member member : List.members ) {
+			if( member.getId().equals(id) && member.getEmail().equals(email) ) {
+				System.out.println("[[[ 회원님의 비밀번호를 해당 메일로 전송했습니다 ]]]");
+					// 메일전송
+					mailsend( email , 2 , member.getPassword() );
+				return;
+			}
+		}
+		System.err.println("[[[동일한 회원정보가 없습니다]]]");
+
+	}
+
 	// 7. 아이디체크
 	public int idcheck( String checkid ) {
 		// int : retrun 했을때 반환 되는 타입
@@ -130,6 +174,28 @@ public class Member {
 			}
 		}
 		return -1; // id체크 없다 
+	}
+	// 8. 회원정보 메뉴
+	public void infomember() {
+		
+		System.out.println(" [[[아이디 : " + this.id );
+		System.out.println(" [[[이름 : " + this.name );
+		System.out.println(" [[[이메일 : " + this.email );
+		System.out.println(" [[[포인트 : " + this.point );
+		
+		System.out.println("1.회원수정[이름,이메일수정] 2.회원탈퇴");
+		int 선택1 = scanner.nextInt();
+		if( 선택1 == 1 ) { deletemember();  }
+		if( 선택1 == 2 ) { updatemember();  }
+		
+	}
+	// 9. 회원탈퇴
+	public void deletemember() {
+		
+	}
+	// 9. 회원수정
+	public void updatemember() {
+		
 	}
 
 	// get , set  메소드 

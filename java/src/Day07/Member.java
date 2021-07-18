@@ -92,10 +92,13 @@ public class Member {
 	public void 로그인() {}
 	
 	// 3. 아이디찾기 메소드 
-	public void 아이디찾기() {}
+	public void 아이디찾기() { // 이름이랑 메일이 동일한겨우 아이디출 console 
+		
+	
+	} 
 	
 	// 4. 비밀번호 찾기 메소드 
-	public void 비밀번호찾기() {}
+	public void 비밀번호찾기() {} // 아이디랑 메일이 동일한경우 메일로 비밀번호 전송
 	
 	// 5. 포인트 증가 메소드 
 	public void 포인트증가() {}
@@ -110,20 +113,6 @@ public class Member {
 	public void 회원수정() {}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }
