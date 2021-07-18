@@ -11,6 +11,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
+
 public class Member {
 	
 	// 필드 = 상태[ 변수 , 객체 등 = 메모리 ]
@@ -176,7 +178,7 @@ public class Member {
 		return -1; // id체크 없다 
 	}
 	// 8. 회원정보 메뉴
-	public void infomember() {
+	public int infomember() {
 		
 		System.out.println(" [[[아이디 : " + this.id );
 		System.out.println(" [[[이름 : " + this.name );
@@ -185,17 +187,38 @@ public class Member {
 		
 		System.out.println("1.회원수정[이름,이메일수정] 2.회원탈퇴");
 		int 선택1 = scanner.nextInt();
-		if( 선택1 == 1 ) { deletemember();  }
-		if( 선택1 == 2 ) { updatemember();  }
-		
+		if( 선택1 == 1 ) { updatemember(); return 1;  }
+		if( 선택1 == 2 ) { deletemember(); return 2;  }
+		return 3;
 	}
 	// 9. 회원탈퇴
 	public void deletemember() {
+	
+		System.out.println("[[[확인]]] 정말 탈퇴하시겠습니까? 예[1] 아니요[0] ");
+		int 선택2 = scanner.nextInt();
+		if( 선택2 == 1 ) { 
+			for( int i = 0 ;i<List.members.size() ;i++ ) {
+				if( List.members.get(i).getId().equals(id) ) {
+					List.members.remove(i);
+					System.out.println("[[[완료]]] : 탈퇴가 되었습니다 [ 로그아웃 ]");
+					FileUtil.filesave( 1 );
+					return;
+				}
+			}
+		}
+
 		
 	}
 	// 9. 회원수정
 	public void updatemember() {
 		
+		System.out.println("[[알림]] 수정하실 정보를 입력해주세요");
+		System.out.print("[[ name: ");	 	this.name = scanner.next();
+		System.out.print("[[ email ");		this.email = scanner.next();
+		
+		System.out.println("[[[완료]]] : 수정이 되었습니다");
+		FileUtil.filesave( 1 );
+	
 	}
 
 	// get , set  메소드 

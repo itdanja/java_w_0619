@@ -38,8 +38,14 @@ public class Start {
 					System.out.println("2.커뮤니티[게시판]");
 					System.out.println("3.로그아웃");
 					int 선택2 = scanner.nextInt();
-					if( 선택2 == 1 ) { logmember.infomember();  }
-					if( 선택2 == 2 ) { 		 }
+					if( 선택2 == 1 ) { 
+						int result = logmember.infomember();
+						if( result == 2 ) break;
+					}
+					if( 선택2 == 2 ) { 	
+						Board board = new Board();
+						board.boardmenu(logmember);
+					}
 					if( 선택2 == 3 ) { break; }
 				}
 			}
