@@ -44,9 +44,10 @@ public class Day12_3 {
 	} // main 끝 
 	
 	public static void memberprint( Member<?> list ) {
-		System.out.println( list.getMembername()+ " 명단 : "+ Arrays.toString( list.getMemberlist() ));
-																// toString(): 객체 정보 반환 [ object 클래스 ] 
-																	// 기본 반환 : 객체 주소값[메모리 주소 ]
+		System.out.println( list.getMembername()+ " 명단 : "+
+							Arrays.toString( list.getMemberlist() ));
+							// toString(): 객체 정보 반환 [ object 클래스 ] 
+							// 기본 반환 : 객체 주소값[메모리 주소 ]
 	}
 	
 	
