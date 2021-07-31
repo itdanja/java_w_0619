@@ -26,4 +26,10 @@ public class Person {
 		this.age = age;
 	}
 	
+	@Override // object 클래스의 객체정보반환 메소드 재정의
+	public String toString() {
+		return name+"("+age+")";
+	}
+	
+
 }

@@ -17,6 +17,9 @@ public class Member<T> {
 			}
 		}
 	}
+
+	
+	
 	public String getMembername() {
 		return membername;
 	}
