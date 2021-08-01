@@ -62,14 +62,7 @@ public class Day13_4 {
 			System.out.println(" 의류 나이키하의 재고 : " + productlist.get(0).get("나이키하의") );
 			System.out.println(" 가방 아디다스가방 재고 : " + productlist.get(1).get("아디다스가방") );
 			
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 	
 	
