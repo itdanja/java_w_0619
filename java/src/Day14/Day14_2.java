@@ -65,8 +65,6 @@ public class Day14_2 {
 						else {
 							System.out.println(" 없는 도서번호 입니다 ");
 						}
-					 
-					
 				}
 			}
 			
