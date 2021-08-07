@@ -26,7 +26,7 @@ public class Day11_6 {
 				Thread thread = new 擠學營儅();
 				
 				if(msw) {
-					擠學營儅.擠學stop(msw);
+					擠學營儅.擠學stop(msw); 
 					
 					thread.start(  ); // 擠學褒ч run 褒ч 
 					msw = false; // 營儅罹睡 滲唳
