@@ -2,8 +2,6 @@ package Day14;
 
 import java.util.Scanner;
 
-import com.sun.tools.jdeprscan.scan.Scan;
-
 public class Day14_1 {
 
 	// API Å¬·¡½º
