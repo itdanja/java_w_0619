@@ -45,37 +45,36 @@
 				
 				
 				
-				
-				
-				
-				
-		Day01 : 출력 
-		Day02 : 연산자 , 자료형 , 변수 , 입력
-		Day03 : 제어문 if 
-		Day04 : 반복문 for 
-		Day05 : 배열 
-		Day06 : 2차원배열 , 클래스 
-		Day07 : 클래스 
-		Day08 : 제한제한자 , 키워드[final,static] , 상속 , [Override]
-		Day09 : 인터페이스 
-		Day10 : [정리]게시판 // 파일처리 // 메일전송 SMTP
-		Day11 : 예외처리 , 멀티스레드 
-		Day12 : 제네릭 < > 
-		Day13 : 컬렉션 프레임워크[자료구조]
-		Day14 : API 클래스 [ String , 날짜 클래스 등 ] 
-			// 정리 => 메일, 녹화본 
-		
-		
-	
-				
-				
-				
-				
-				
-				
-				
-				
-				
+	Day01 : 출력 
+	Day02 : 연산자 , 자료형 , 변수 , 입력
+	Day03 : 제어문 if 
+	Day04 : 반복문 for 
+	Day05 : 배열 
+	Day06 : 2차원배열 , 클래스 
+	Day07 : 클래스 
+	Day08 : 제한제한자 , 키워드[final,static] , 상속 , [Override]
+	Day09 : 인터페이스 
+	Day10 : [정리]게시판 // 파일처리 // 메일전송 SMTP
+	Day11 : 예외처리 , 멀티스레드 
+	Day12 : 제네릭 < > 
+	Day13 : 컬렉션 프레임워크[자료구조]
+	Day14 : API 클래스 [ String , 날짜 클래스 등 ] 
+		// 정리 => 메일, 녹화본 
+	Day15 : Java GUI [ JAVAFX ] 
+		1. 이클립스에서 JAVAFX 설치
+			 1. 이클립스 메뉴 => [ Help ] -> [Eclipse Marketplace]
+			 2. javafx 검색 => e(fx)버전 => install(설치간 라이센스 창 나오면 accept 체크후 다음)=> 이클립스 화면 오른쪽 하단[ 초록색부분 설치현황] => 설치완료 [ 이클립스 재시작 여부 ]
+			 3. javafx프로젝트생성 : 메뉴 => file => project => javafx project => [ javase 버전 javase-11 ] 
+		2. JAVAFX 라이브러리 
+			1. https://gluonhq.com/products/javafx
+			2. javafx11 => JavaFX Windows SDK => 다운로드 => 압축풀기
+			3. 현재 프로젝트에 sdk .jar 파일 추가 
+				1. 해당 프로젝트 오른쪽클릭 => [Build Path] → [configure ] -> [Libraries] -> modulepath 클릭-> [Add External JAR]
+				2. [ 압출풀었던 폴더 ] => sdk 폴더의 lib 폴더에 들어가서 .jar 파일 모두 선택 [ .zip 파일 제외 ]
+		3.씬빌더 : 레이아웃과 컨트롤 구성해주는 프로그램
+				1. https://gluonhq.com/products/scene-builder/
+				2. Windows Installer 64-bit 다운로드
+				3. 설치
 				
 				
 				
