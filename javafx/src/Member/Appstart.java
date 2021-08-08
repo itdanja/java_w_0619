@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Appstart extends Application {
@@ -22,9 +23,12 @@ public class Appstart extends Application {
 			Scene scene = new Scene(parent);
 		//4.스테이지에 씬 넣기 
 			stage.setScene(scene);
-		//5.스테이지 설정 s
+		//5.스테이지 설정
 			stage.setTitle("Adidas Login"); // 윈도우창 이름
 			stage.setResizable(false); // 윈도우창 크기 변경 불가
+			// 스테이지 아이콘 설정
+			Image image = new Image("file:/Member/logo.png");
+			stage.getIcons().add(  image );
 		//6. 스테이지 열기 
 			stage.show();
 	}
