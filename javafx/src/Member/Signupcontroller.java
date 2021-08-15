@@ -5,9 +5,11 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 public class Signupcontroller implements Initializable {
@@ -78,12 +80,30 @@ public class Signupcontroller implements Initializable {
     			return;
     		}
     	// 3. 객체화 
-    		lblconfirm.setText("[성공] 회원가입 성공 ");
+    		
     		Member member = new Member(id, password, name, email);
     	// 4. 데이터베이스 저장 
     		// 1. db 객체 호출
     		MemberDAO memberDAO = MemberDAO.getinstance();
     		//MemberDAO memberDAO = new MemberDAO()
+    		boolean result =  memberDAO.signup(member);
+    		
+    		if( result ) {
+    			// 메시지 창 띄우기 
+    			// 1. 메시지 객체 만들기 
+    			Alert alert = new Alert( AlertType.INFORMATION );
+    			// 2. 메시지 내용 넣기 
+    			alert.setContentText("회원가입 해주셔서 감사합니다");
+    			alert.setHeaderText("회원가입 성공");
+    			// 3. 메시지 실행 
+    			alert.showAndWait(); // 창열고 닫을때 까지 기다리기 
+    			// 4. 현재 회원가입 스테이지 끄기 
+    			btnsignup.getScene().getWindow().hide();
+    			
+    		}else {
+    			lblconfirm.setText("[경고] 동일한 아이디가 존재합니다" );
+    			return;
+    		}
     }
 	
     
