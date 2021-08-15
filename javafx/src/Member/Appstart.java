@@ -29,7 +29,7 @@ public class Appstart extends Application {
 			stage.setTitle("Adidas Login"); // 윈도우창 이름
 			stage.setResizable(false); // 윈도우창 크기 변경 불가
 			// 스테이지 아이콘 설정
-			Image image = new Image("file:/C:/Users/User/git/java_w_0619/javafx/logo.png");
+			Image image = new Image("file:C:/Users/User/git/java_w_0619/javafx/src/Member/logo.jpg");
 			stage.getIcons().add(  image );
 			
 		//6. 스테이지 열기 
