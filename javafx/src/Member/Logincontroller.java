@@ -55,7 +55,22 @@ public class Logincontroller implements Initializable {
 
     @FXML
     void findid(MouseEvent event) {
-    	System.out.println("[[ 아이디찾기 페이지로 이동 ]] ");
+    	
+    	Stage stage = new Stage();
+    	try {
+    		Parent parent = FXMLLoader.load(getClass().getResource("findid.fxml"));
+    		Scene scene = new Scene(parent);
+    		stage.setScene(scene);
+    		stage.setResizable(false);
+    		stage.setTitle("Adidas findID");
+    		Image image = new Image("file:C:/Users/User/git/java_w_0619/javafx/src/Member/logo.jpg");
+			stage.getIcons().add(  image );
+    		stage.show();
+    	}
+    	catch (Exception e) {
+			// TODO: handle exception
+		}
+    	
     }
 
     @FXML
@@ -74,15 +89,17 @@ public class Logincontroller implements Initializable {
     					// 3초 정지후 실행코드 
     								// 람다식 표현 [ 익명 메소드 ] : 메소드정의 형식이 아닌 인수와 실행코드 
     								// 인수 ->  { 실행코드 } 
-
-    			// 임시 : 아이디 admin  비밀번호:1234
-    			if( txtid.getText().equals("admin") ) {
-    				if( txtpassword.getText().equals("1234") ) {
-    					lblconfirm.setText(" 로그인 성공 ");
-    					return;
-    				}
-    			}
-    			lblconfirm.setText("[실패] 동일한 회원정보가 없습니다 ");
+    		String id = txtid.getText();
+    		String password = txtpassword.getText();
+    		// 로그인처리 
+    		MemberDAO memberDAO = MemberDAO.getinstance();
+    		boolean result = memberDAO.login(id, password);
+    		if( result ) {
+    			// 로그인 성공후 메인 페이지로 이동 
+    			lblconfirm.setText("[[ 로그인 성공 ]]");
+    		}else {
+    			lblconfirm.setText("아이디 혹은 비밀번호가 다릅니다");
+    		}
     		} // 람다식 실행코드 끝
     	
     	); // setOnFinished 끝
