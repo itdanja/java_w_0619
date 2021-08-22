@@ -21,6 +21,24 @@ import javafx.util.Duration;
 public class Logincontroller implements Initializable {
 							// 인터페이스 : javafx 초기값 
 	
+	// 현재 클래스를 객체 만들기 
+	public static Logincontroller instance;
+	
+	// 현재 클래스의 메모리 넣기 
+	public Logincontroller() {
+		instance = this;
+	}
+	
+	// 객체 반환메소드 
+	public static Logincontroller getinstance() {
+		return instance;
+	}
+	
+	// 로그인시 입력된 아이디 호출 메소드 
+	public String gettxtid() {
+		return txtid.getText();
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// 실행 했을때 초기 설정 
@@ -97,6 +115,33 @@ public class Logincontroller implements Initializable {
     		if( result ) {
     			// 로그인 성공후 메인 페이지로 이동 
     			lblconfirm.setText("[[ 로그인 성공 ]]");
+    				//
+	    			try {
+	    				
+	    				Stage stage = new Stage();
+	    				Parent parent = FXMLLoader.load( getClass().getResource("/chatting/client.fxml"));
+	    				Scene scene = new Scene(parent);
+	    				stage.setScene(scene);
+	    				// 3. 스테이지에 씬넣기 
+	    				stage.setScene( scene );
+	    					// 스테이지 설정 
+	    					stage.setTitle("Kakaotalk");
+	    					stage.setResizable(false);
+	    						//Image image = new Image("file:이미지의경로");
+	    					Image image = new Image("file:C:/Users/User/git/java_w_0619/javafx/src/chatting/kakao.png");
+	    					stage.getIcons().add( image );
+	    				stage.show();
+	    				
+	    				// 현재 스테이지 종료 
+	    				btnlogin.getScene().getWindow().hide();
+	    				
+	    			}
+	    			catch (Exception e) {
+	    				// TODO: handle exception
+	    			}
+	    			
+    				//
+	    			
     		}else {
     			lblconfirm.setText("아이디 혹은 비밀번호가 다릅니다");
     		}

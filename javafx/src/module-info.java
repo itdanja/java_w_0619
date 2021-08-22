@@ -8,5 +8,6 @@ module javafx {
 	// 현 패키지내에서 사용할 외부 라이브러리 연결 
 	opens application to javafx.controls , javafx.graphics, javafx.fxml;
 	opens Member to javafx.controls , javafx.graphics , javafx.fxml , java.sql;
-
+	opens chatting to javafx.controls , javafx.graphics , javafx.fxml , java.sql;
+	
 }

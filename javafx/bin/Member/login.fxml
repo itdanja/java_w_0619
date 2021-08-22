@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:controller="Member.Logincontroller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="386.0" fitWidth="694.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@background.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtid" layoutX="379.0" layoutY="69.0" prefHeight="40.0" prefWidth="285.0" promptText="User ID" />
+      <PasswordField fx:id="txtpassword" layoutX="380.0" layoutY="130.0" prefHeight="40.0" prefWidth="285.0" promptText="User Pssword" />
+      <Label fx:id="btnlogin" alignment="CENTER" layoutX="379.0" layoutY="188.0" onMouseClicked="#login" prefHeight="34.0" prefWidth="285.0" style="-fx-border-color: #ffffff;" text="LOGIN">
+         <font>
+            <Font name="Yj BACDOO Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="btnfindpassword" layoutX="379.0" layoutY="290.0" onMouseClicked="#findpassowd" prefHeight="34.0" prefWidth="120.0" text="Find password">
+         <font>
+            <Font name="Yj BACDOO Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="btnfindid" layoutX="379.0" layoutY="261.0" onMouseClicked="#findid" prefHeight="34.0" prefWidth="120.0" text="Find ID">
+         <font>
+            <Font name="Yj BACDOO Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="btnsignup" layoutX="598.0" layoutY="14.0" onMouseClicked="#signup" prefHeight="24.0" prefWidth="75.0" text="SIGN UP">
+         <font>
+            <Font name="Yj BACDOO Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="334.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="333.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="206.0" fitWidth="277.0" layoutX="33.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgloding" fitHeight="75.0" fitWidth="80.0" layoutX="584.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@loding.gif" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblconfirm" alignment="CENTER" layoutX="379.0" layoutY="222.0" prefHeight="34.0" prefWidth="285.0" text="Label" textFill="RED">
+         <font>
+            <Font name="Yj BACDOO Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

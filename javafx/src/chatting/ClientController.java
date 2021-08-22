@@ -1,4 +1,4 @@
-package application;
+package chatting;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -6,12 +6,14 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Member.Logincontroller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -33,7 +35,7 @@ public class ClientController implements Initializable {
 				// 접속하기 
 				try {
 					socket = new Socket("127.0.0.1" , port );
-					send( txtname.getText() +"님 입장했습니다\n");
+					send( txtloginid.getText() +"님 입장했습니다\n");
 					receive();
 				}
 				catch (Exception e) {
@@ -90,12 +92,18 @@ public class ClientController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
-		txtmsg.setPromptText("접속 후 대화입력 가능");
-		txtmsg.setDisable(true); // 대화입력창 사용금지
-		btnsend.setDisable(true); // 전송 버튼 사용금지
-		
+		// 1. 클라이언트 실행 
+		clientstart( 1234 );
+		// 2. 로그인 아이디 가져오기 
+		txtloginid.setText( Logincontroller.getinstance().gettxtid() );
 	}
+	
+    @FXML
+    private Button btnlogout;
+
+    @FXML
+    private Label txtloginid;
+
 	
     @FXML
     private TextArea txtcontents;
@@ -106,19 +114,19 @@ public class ClientController implements Initializable {
     @FXML
     private Button btnsend;
 
-    @FXML
-    private TextField txtname;
 
     @FXML
-    private TextField txtport;
+    void logout(ActionEvent event) {
+	    	// 1. 클라이언트 종료 
+			clientstop();
+			Platform.exit(); // 모든 플랫폼 종료
+    }
 
     @FXML
-    private Button btnconnect;
-
-    @FXML
-    void msgsend(ActionEvent event) {
-      	// 메시지 보내기 
-    	send( txtname.getText() + " : " + txtmsg.getText()+"\n");
+    void msgsend(ActionEvent event) { // 엔터를 눌렀을때 
+    	
+    	// 메시지 보내기 
+    	send( txtloginid.getText() + " : " + txtmsg.getText()+"\n");
     	
     	// 보내기 후 
     	txtmsg.setText(""); // 입력창 공백으로
@@ -130,56 +138,13 @@ public class ClientController implements Initializable {
     void send(ActionEvent event) { // 전송 버튼을 눌렀을때 
     	
     	// 메시지 보내기 
-    	send( txtname.getText() + " : " + txtmsg.getText()+"\n");
+    	send( txtloginid.getText() + " : " + txtmsg.getText()+"\n");
     	
     	// 보내기 후 
     	txtmsg.setText(""); // 입력창 공백으로
     	txtmsg.requestFocus();
     }
-    
-    
-    @FXML
-    void connect(ActionEvent event) { // 접속버튼을 눌렀을때 
-    	if( btnconnect.getText().equals("접속")) { // 접속 전이면 
-    		if( txtname.getText().equals("") ) {
-    			Alert alert = new Alert( AlertType.INFORMATION );
-    			alert.setContentText(" 닉네임 입력해주세요 ");
-    			alert.setTitle("접속불가");
-    			alert.showAndWait();
-    			return;
-    		}
-    		if( txtport.getText().equals("") ) {
-    			Alert alert = new Alert( AlertType.INFORMATION );
-    			alert.setContentText(" port 입력해주세요 ");
-    			alert.setTitle("접속불가");
-    			alert.showAndWait();
-    			return;
-    		}
-    		
-    		// 1. 클라이언트 실행 
-    			clientstart( Integer.parseInt( txtport.getText() ) );
-    		// 2. 접속 후 
-    		Platform.runLater( () -> txtcontents.appendText("-----------[채팅방 접속]-----------\n") );
-    		
-    		btnconnect.setText("나가기"); // 버튼이름 변경 
-    		txtmsg.setDisable(false); // 사용가능 
-    		btnsend.setDisable(false); // 사용가능 
-    		txtmsg.requestFocus(); // 포커스 => 커서 
-    		
-    	}else { // 접속 중이면 
-    		// 1. 클라이언트 종료 
-    			clientstop();
-    		// 2. 클라이언트 종료후
-    		Platform.runLater( () -> txtcontents.appendText("-----------[채팅방 퇴장]-----------\n") );
-    		
-    		btnconnect.setText("접속");
-    		txtmsg.setPromptText("접속 후 대화입력 가능");
-    		txtmsg.setDisable(true); // 대화입력창 사용금지
-    		btnsend.setDisable(true); // 전송 버튼 사용금지	
-    	}
-    }
-	
-	
+
 	
     
     

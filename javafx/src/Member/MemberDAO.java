@@ -96,9 +96,7 @@ public class MemberDAO {
 			}
 			return null; // 검색 결과가 없으면 
 			
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
+		}catch (Exception e) {}
 		return null;
 	}
 	

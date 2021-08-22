@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="chatting.ClientController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="328.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea fx:id="txtcontents" disable="true" layoutX="3.0" layoutY="46.0" prefHeight="420.0" prefWidth="321.0" />
+      <TextField fx:id="txtmsg" layoutX="3.0" layoutY="473.0" onAction="#msgsend" prefHeight="32.0" prefWidth="250.0" promptText="대화 입력" />
+      <Button fx:id="btnsend" layoutX="260.0" layoutY="473.0" mnemonicParsing="false" onAction="#send" prefHeight="32.0" prefWidth="63.0" style="-fx-background-color: #ffffff;" text="전송">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="btnlogout" layoutX="243.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="80.0" style="-fx-background-color: #ffffff;" text="로그아웃">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Label fx:id="txtloginid" layoutX="14.0" layoutY="9.0" prefHeight="32.0" prefWidth="159.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

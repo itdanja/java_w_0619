@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Member.Findidcontroller">
+   <children>
+      <ImageView fitHeight="386.0" fitWidth="694.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@background.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="btnfindid" alignment="CENTER" layoutX="383.0" layoutY="219.0" onMouseClicked="#findid" prefHeight="40.0" prefWidth="285.0" style="-fx-border-color: #ffffff;" text="Find ID">
+         <font>
+            <Font name="Yj BACDOO Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblconfirm" alignment="CENTER" layoutX="384.0" layoutY="80.0" prefHeight="34.0" prefWidth="285.0" text="Label" textFill="RED">
+         <font>
+            <Font name="Yj BACDOO Bold" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="206.0" fitWidth="277.0" layoutX="33.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtname" layoutX="384.0" layoutY="118.0" prefHeight="40.0" prefWidth="285.0" promptText="User name" />
+      <TextField fx:id="txtemail" layoutX="384.0" layoutY="168.0" prefHeight="40.0" prefWidth="285.0" promptText="User Email" />
+   </children>
+</AnchorPane>

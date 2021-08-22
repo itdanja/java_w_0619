@@ -33,9 +33,9 @@ public class Client {
 						
 						// 받은 메시지를 모든 접속된 리스트로 전달 
 						for(Client client : ServerController.clients ) {
-							client.send( msg ); // 받은 메시지 전달 
-										
+							client.send( msg ); // 받은 메시지 전달 				
 						}
+						
 					}
 				}catch (Exception e) { // 오류 발생했을경우 
 					
@@ -58,7 +58,7 @@ public class Client {
 					OutputStream outputStream = socket.getOutputStream(); // 출력 스트림 
 					byte[] bytes = msg.getBytes();
 					outputStream.write( bytes );	// 바이트열 -> 문자열 변환 출력 
-					outputStream.flush(); // 스트림 닫기 
+					outputStream.flush(); // 스트림 초기화 
 				}catch (Exception e) { // 오류 발생했을경우 
 					
 					  Platform.runLater(()->{ String msg = " * 오류 발생 : 서버내 클라이언트가 메시지 보내는 메소드 " +
