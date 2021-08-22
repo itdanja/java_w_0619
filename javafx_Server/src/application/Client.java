@@ -34,15 +34,14 @@ public class Client {
 						// 받은 메시지를 모든 접속된 리스트로 전달 
 						for(Client client : ServerController.clients ) {
 							client.send( msg ); // 받은 메시지 전달 
+										
 						}
-						inputStream.close(); // 입력스트림 닫기 
 					}
-				}
-				catch (Exception e) { // 오류 발생했을경우 
-					Platform.runLater(()->{ 
-						String msg = " * 오류 발생 : 서버내 클라이언트가 메시지 받는 메소드 " +  e+"\n";
-						ServerController.getinstance().txtserverstatus.appendText(msg);
-					});
+				}catch (Exception e) { // 오류 발생했을경우 
+					
+					  Platform.runLater(()->{ String msg = " * 오류 발생 : 서버내 클라이언트가 메시지 받는 메소드 " +
+					  e+"\n"; ServerController.getinstance().txtserverstatus.appendText(msg); });
+					 
 				}
 			} // run end 
 		}; // runnable end
@@ -57,13 +56,14 @@ public class Client {
 			public void run() {
 				try {
 					OutputStream outputStream = socket.getOutputStream(); // 출력 스트림 
-					outputStream.write( msg.getBytes() );	// 바이트열 -> 문자열 변환 출력 
-					outputStream.close(); // 스트림 닫기 
+					byte[] bytes = msg.getBytes();
+					outputStream.write( bytes );	// 바이트열 -> 문자열 변환 출력 
+					outputStream.flush(); // 스트림 닫기 
 				}catch (Exception e) { // 오류 발생했을경우 
-					Platform.runLater(()->{ 
-						String msg = " * 오류 발생 : 서버내 클라이언트가 메시지 보내는 메소드 " +  e+"\n";
-						ServerController.getinstance().txtserverstatus.appendText(msg);
-					});
+					
+					  Platform.runLater(()->{ String msg = " * 오류 발생 : 서버내 클라이언트가 메시지 보내는 메소드 " +
+					  e+"\n"; ServerController.getinstance().txtserverstatus.appendText(msg); });
+					
 				}
 			}
 		}; // runnable end

@@ -23,7 +23,7 @@ public class Main extends Application {
 				stage.setTitle("Kakaotalk");
 				stage.setResizable(false);
 					//Image image = new Image("file:이미지의경로");
-				Image image = new Image("file:C:/Users/User/Desktop/java/주말/javafx_Client/src/application/kakao.png");
+				Image image = new Image("file:C:/Users/User/git/java_w_0619/javafx_Client/src/application/kakao.png");
 				stage.getIcons().add( image );
 				
 			stage.show();

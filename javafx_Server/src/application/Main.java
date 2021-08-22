@@ -22,7 +22,7 @@ public class Main extends Application {
 			stage.setTitle("Kakaotalk Server");
 			stage.setResizable(false);
 				//Image image = new Image("file:이미지의경로");
-			Image image = new Image("file:C:/Users/User/Desktop/java/주말/javafx_Server/src/application/kakao.png");
+			Image image = new Image("file:C:/Users/User/git/java_w_0619/javafx_Server/src/application/kakao.png");
 			stage.getIcons().add( image );
 			
 		stage.show();
@@ -32,6 +32,37 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	/*
+	 * 		서버 프로젝트														클라이언트 프로젝트
+	 * 
+	 * 
+	 * 			서버컨트롤러 
+	 * 				* 스레드풀 [ 멀티스레드 관리 ] 
+	 * 				* 접속된 클라이언트의 리스트[ Vector ] 
+	 *				* 서버소켓 
+	 *				* 서버 실행 
+	 *				* 서버 종료 
+	 * 		
+	 * 			클라이언트클래스
+	 * 				*소켓
+	 * 				*생성자[ 메시지 수신 실행]
+	 * 				* 수신 [ 무한루프 , 멀티스레드 , 송신호출 ]
+	 * 				* 송신 [ 멀티스레드 ]
+	 * 
+	 *
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 
 	/*
 	 *  FX:ID
